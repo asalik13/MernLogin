@@ -1,0 +1,14 @@
+{
+  "name": "production",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy-client-heroku":"git add . && git commit -m 'Heroku Deploy'&& git push heroku master",
+    "deploy-client-netlify":"npm run build && netlify deploy",
+    "deploy":"npm run deploy-client-heroku && npm run deploy-client-netlify"
+  },
+  "author": "",
+  "license": "ISC"
+}
