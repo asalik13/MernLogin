@@ -27,7 +27,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "heroku-postbuild":"npm install",
-    "deploy":"git add ."
+    "deploy":"git add . && git commit -m \"deploy\" && git push heroku master"
 
   },
   "author": "",
