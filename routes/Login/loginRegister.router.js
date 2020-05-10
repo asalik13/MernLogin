@@ -6,15 +6,22 @@ const host = process.env.HOST;
 let sendMail = require("../../config/email");
 
 router.post("/login", passport.authenticate("local"), function(req, res) {
-  Users.findById(req.user._id, function(err, user, info) {
+  if(!req.user.active){
+    req.session.destroy();
+    return res.json({ error: "please verify email" });
+  }
+  req.user.lastLoginDate = Date.now()
+  req.user.save()
+  return res.status(200).json({user:req.user})
+  /*Users.findById(req.user._id, function(err, user, info) {
     if (!user.active) {
-      req.session.destroy();
-      return res.json({ error: "please verify email" });
+
     }
     user.lastLoginDate = Date.now();
-    user.save();
-    return res.status(200).json({ id: req.user._id });
-  });
+     res.status(200).json({ user: user });
+     user.save();
+
+  });*/
 });
 
 router.post("/register", (req, res, next) => {
@@ -74,7 +81,7 @@ function checkAuthentication(req, res, next) {
   }
 }
 router.get("/secret", checkAuthentication, (req, res) =>
-  res.status(200).json(req.user)
+   res.status(200).json(req.user)
 );
 
 router.post("/logout", checkAuthentication, (req, res) => {

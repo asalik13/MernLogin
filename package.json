@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "concurrently": "^5.2.0",
     "connect-mongo": "^3.2.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -26,10 +27,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "heroku-postbuild":"npm install",
-    "build":"cd client && npm run build",
-    "deploy":"npm run build && git add . && git commit -m \"deploy\" && git push heroku master"
-
+    "heroku-postbuild": "npm install",
+    "build": "cd client && npm run build",
+    "deploy": "npm run build && git add . && git commit -m \"deploy\" && git push heroku master",
+    "dev": "concurrently --kill-others \"nodemon server\" \"cd client && npm start\""
   },
   "author": "",
   "license": "ISC"

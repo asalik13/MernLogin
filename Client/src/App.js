@@ -9,7 +9,7 @@ import ForgotPage from "./Login/Forgot.component";
 import Verify from "./Login/Verify.component";
 
 
-function createRoute(){}
+
 
 function App() {
   return (
