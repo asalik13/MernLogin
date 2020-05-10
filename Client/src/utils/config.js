@@ -2,7 +2,7 @@
 
 //let link = "https://young-garden-77767.herokuapp.com/api"
 
-let link = "http://www.ayushsalik.com/api"
+let link = "https://asalik13-loginserver.herokuapp.com/api"
 
 export default {
   link: link,
